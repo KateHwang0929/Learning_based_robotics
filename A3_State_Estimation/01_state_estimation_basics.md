@@ -99,13 +99,5 @@ $$
 
 ## 5. Why State Estimation Matters
 
-State estimation is essential in robotics because almost every robotic task depends on knowing the state of the robot and environment.
-
-For example:
-
-* Navigation requires estimating the robot’s position.
-* Control requires estimating velocity, orientation, and tracking error.
-* Mapping requires estimating the positions of landmarks or obstacles.
-* SLAM requires estimating both the robot pose and the environment at the same time.
-
-Without reliable state estimation, even a good planner or controller may fail because it is making decisions based on inaccurate information.
+State estimation is important in robotics because almost every robotic task depends on knowing the state of the robot and environment.
+A robot must estimate where it is, how it is moving, and what exists around it before it can make reliable decisions.
