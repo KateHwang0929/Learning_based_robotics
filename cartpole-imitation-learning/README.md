@@ -59,17 +59,17 @@ The expert policy uses the CartPole state values to decide whether the cart shou
 
 ## Reward
 
-The environment gives a reward of `+1` for every time step that the pole stays balanced.
+The environment gives a reward of `+1` for every time step that the pole stays balanced
 
-A higher total reward means the pole remained upright for a longer period of time.
+A higher total reward means the pole remained upright for a longer period of time
 
 ## Procedure
 
-1. Create an expert policy using a rule-based linear feedback controller.
-2. Collect demonstration data from the expert policy.
-3. Train an imitation learning policy using the expert demonstrations.
-4. Test the learned policy in the CartPole environment.
-5. Compare the learned policy’s performance with the expert policy.
+1. Create an expert policy using a rule-based linear feedback controller
+2. Collect demonstration data from the expert policy
+3. Train an imitation learning policy using the expert demonstrations
+4. Test the learned policy in the CartPole environment
+5. Compare the learned policy’s performance with the expert policy
 
 ## Goal
 
