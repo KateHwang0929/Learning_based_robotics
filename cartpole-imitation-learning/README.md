@@ -28,7 +28,7 @@ The CartPole environment provides the current state of the system as:
 | ----------- | --------------------- | ------------------------------------------------ |
 | `x`         | Cart position         | The horizontal position of the cart              |
 | `ẋ`     | Cart velocity         | The speed of the cart                            |
-| `theta`     | Pole angle            | The angle of the pole from the vertical position |
+| `θ`     | Pole angle            | The angle of the pole from the vertical position |
 | `θ̇ ` | Pole angular velocity | The speed at which the pole is rotating          |
 
 ## Action Space
