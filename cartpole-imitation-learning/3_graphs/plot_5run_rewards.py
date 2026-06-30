@@ -2,15 +2,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-# ============================================================
-# 1. Load CSV
-# ============================================================
-
-csv_file = "dataset_size_5run_rewards.csv"
-
-df = pd.read_csv(csv_file)
-
+df = pd.read_csv("dataset_size_5run_rewards.csv")
 required_columns = [
     "dataset_size",
     "run_1_reward",
@@ -25,17 +17,12 @@ for col in required_columns:
     if col not in df.columns:
         raise ValueError(f"Missing required column: {col}")
 
-# Make sure dataset sizes are in order
 df = df.sort_values("dataset_size")
 
 print("Loaded:", csv_file)
 print(df.head())
 
-
-# ============================================================
-# 2. Graph settings
-# ============================================================
-
+# graph
 x_col = "dataset_size"
 
 runs = {
@@ -75,10 +62,7 @@ output_folder = "reward_graphs"
 os.makedirs(output_folder, exist_ok=True)
 
 
-# ============================================================
-# 3. Function for one graph
-# ============================================================
-
+# Function for each graph
 def plot_single_graph(label, column, color, filename):
     plt.figure(figsize=(10, 6))
 
@@ -105,9 +89,7 @@ def plot_single_graph(label, column, color, filename):
     print("Saved:", save_path)
 
 
-# ============================================================
-# 4. Graph 1 to Graph 6: separate graphs
-# ============================================================
+# graph 1-6
 
 for label, info in runs.items():
     plot_single_graph(
@@ -118,10 +100,7 @@ for label, info in runs.items():
     )
 
 
-# ============================================================
-# 5. Graph 7: all together
-# ============================================================
-
+# graph 7 - all together
 plt.figure(figsize=(12, 7))
 
 for label, info in runs.items():
@@ -144,7 +123,7 @@ plt.title("All Runs and Average: Reward vs Dataset Size")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-
+#export and save
 save_path = os.path.join(output_folder, "graph_7_all_runs_and_average.png")
 plt.savefig(save_path, dpi=300)
 plt.close()
