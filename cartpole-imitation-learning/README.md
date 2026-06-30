@@ -21,15 +21,15 @@ We first create a rule-based expert policy, collect demonstrations from that exp
 The CartPole environment provides the current state of the system as:
 
 ```text
-[x, x_dot, theta, theta_dot]
+[x, ẋ, theta, θ̇ ]
 ```
 
 | Variable    | Meaning               | Description                                      |
 | ----------- | --------------------- | ------------------------------------------------ |
 | `x`         | Cart position         | The horizontal position of the cart              |
-| `x_dot`     | Cart velocity         | The speed of the cart                            |
+| `ẋ`     | Cart velocity         | The speed of the cart                            |
 | `theta`     | Pole angle            | The angle of the pole from the vertical position |
-| `theta_dot` | Pole angular velocity | The speed at which the pole is rotating          |
+| `θ̇ ` | Pole angular velocity | The speed at which the pole is rotating          |
 
 ## Action Space
 
