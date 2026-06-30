@@ -6,21 +6,13 @@ import torch.optim as optim
 import csv
 
 
-# ============================================================
-# 1. Load expert dataset
-# ============================================================
-
 states = np.load("cartpole_states.npy")
 actions = np.load("cartpole_actions.npy")
-
 print("states shape:", states.shape)
 print("actions shape:", actions.shape)
 
 
-# ============================================================
-# 2. Define imitation model
-# ============================================================
-
+#define imitation model
 class StudentPolicy(nn.Module):
     def __init__(self):
         super().__init__()
@@ -37,10 +29,7 @@ class StudentPolicy(nn.Module):
         return self.net(x)
 
 
-# ============================================================
-# 3. Train student policy
-# ============================================================
-
+#train student policy
 def train_student(train_states, train_actions, epochs=150, batch_size=64):
     model = StudentPolicy()
 
@@ -69,10 +58,7 @@ def train_student(train_states, train_actions, epochs=150, batch_size=64):
     return model
 
 
-# ============================================================
-# 4. Evaluate student policy
-# ============================================================
-
+#evaluate student policy
 def choose_action(model, obs):
     obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
 
@@ -107,20 +93,14 @@ def evaluate_student(model, episodes=50):
     return np.mean(rewards)
 
 
-# ============================================================
-# 5. Experiment settings
-# ============================================================
-
+#experiment settings
 NUM_RUNS = 5
 EVAL_EPISODES = 50
 EPOCHS = 150
 dataset_sizes = list(range(20, 1001, 20))
 
 
-# ============================================================
-# 6. Run 5 independent training runs and save one CSV
-# ============================================================
-
+#Run 5 independent training runs and save one csv
 rows = []
 
 for size in dataset_sizes:
@@ -131,14 +111,13 @@ for size in dataset_sizes:
     for run in range(NUM_RUNS):
         print(f"Run {run + 1}/{NUM_RUNS}")
 
-        # Different random subset for each run
         rng = np.random.default_rng(42 + run)
         idx = rng.choice(len(states), size=size, replace=False)
 
         train_states = states[idx]
         train_actions = actions[idx]
 
-        # Different but reproducible model initialization for each run
+        #made it different but reproducible model initialization for each run
         torch.manual_seed(100 + run)
 
         model = train_student(
@@ -173,12 +152,8 @@ for size in dataset_sizes:
     print(f"Average of 5 runs: {average_reward:.2f}")
 
 
-# ============================================================
-# 7. Export one clean CSV file
-# ============================================================
-
+#export csv
 output_file = "dataset_size_5run_rewards.csv"
-
 with open(output_file, "w", newline="") as f:
     writer = csv.DictWriter(
         f,
