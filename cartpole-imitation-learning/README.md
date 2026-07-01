@@ -73,4 +73,4 @@ A higher total reward means the pole remained upright for a longer period of tim
 
 ## Goal
 
-The goal of this project is to understand how an agent can learn control behavior by observing expert demonstrations. Through this project, we explore the connection between classical control, robotics, and machine learning.
+The goal of this project is to understand how an agent can learn control behavior by observing expert demonstrations. Through this project, we explore the connection between classical control, robotics, and machine learning!!
